@@ -6,8 +6,7 @@
 (require "helix/static.scm")
 
 ; TODO: fallback to wakatime
-(define (wakatime-cli)
-  "wakatime-cli")
+(define wakatime-cli "wakatime-cli")
 
 (define (get-ini-value content key)
   (letrec ([loop (lambda (lines)
