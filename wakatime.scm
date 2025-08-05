@@ -58,12 +58,9 @@
          [entity (string-join (list "--entity=\"" filename "\""))]
          [plugin-name "--plugin=\"helix/25.07.1 helix-wakatime/0.1.0\""]
          [write-arg (if is-file-saved? "--write" "")])
-    (~> (command wakatime-cli [list entity plugin-name write-arg])
-        with-stdout-piped
-        spawn-process
-        Ok->value
-        wait->stdout
-        Ok->value)
+    (~> wakatime-cli ;
+        (command [list entity plugin-name write-arg])
+        spawn-process)
     (set! *last-heartbeat-file* filename)
     (set! *last-heartbeat-time* (Some time))))
 
